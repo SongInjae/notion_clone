@@ -1,6 +1,6 @@
 import { request } from "./api.js";
 
-export default function modal(fetchSidebar) {
+export default function Modal(fetchSidebar) {
   const $modal = document.getElementById("modal");
   const $submitModal = document.getElementById("submit-modal");
   const $modalInput = document.getElementById("modal-input-title");

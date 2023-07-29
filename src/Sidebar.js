@@ -1,5 +1,5 @@
 import { request } from "./api.js";
-import modal from "./Modal.js";
+import Modal from "./Modal.js";
 
 function navDraw(documents, $target, fetchSidebar, onChange) {
   const $div = document.createElement("div");
@@ -93,7 +93,7 @@ export default function Sidebar({ $target, initialState, onChange }) {
     const documents = await request("/documents");
     this.setState(documents);
   };
-  modal(fetchSidebar);
+  Modal(fetchSidebar);
   const $nav = document.createElement("nav");
   $nav.innerText = "사이드바";
 
