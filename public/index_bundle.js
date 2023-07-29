@@ -1,495 +1,263 @@
-(() => {
-  "use strict";
-  var t = {
-      314: (t, n, e) => {
-        e.d(n, { Z: () => s });
-        var o = e(81),
-          a = e.n(o),
-          i = e(645),
-          r = e.n(i)()(a());
-        r.push([
-          t.id,
-          "/* 전체 css 적용 */\n* {\n    margin: 0;\n    padding: 0;\n}\n/* 영역 분리 */\n#app {\n    display: flex;\n}\n.notion-sidebar-container {\n    width: 20%;\n}\n.notion-content {\n    width: 80%;\n    min-height: 100vh;\n}\n/* 모달 관련 css */\n#modal {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100vw;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, 0.25);\n    display: none;\n}\n\n.modal-content {\n    background-color: white;\n    margin: 10% auto;\n    padding: 20px;\n    border: 1px solid black;\n    border-radius: 4px;\n    width: 40%;\n}\n#modal button {\n    background-color: rgb(232, 199, 100);\n    width: 30px;\n\n}\n\n/* Sidebar css 적용 */\nnav {\n    width: 100%;\n    min-height: 100vh;\n    background-color: rgb(238, 238, 238);\n    padding-top: 15px;\n    padding-left: 10px;\n}\n.container {\n    width: 100%;\n    display: flex;\n    overflow: hidden;\n    margin: 5px 0px;\n    padding: 5px 0;\n}\n.container:hover {\n    cursor: pointer;\n}\n  \n.container span {\n    flex-grow: 1;\n    overflow: hidden;\n}\ndiv span {\n    flex-grow: 1;\n}\n.notion-sidebar-container button {\n    width: 20px;\n    height: 20px;\n    text-align: center;\n    background: none;\n    border: none;\n    padding: 2px;\n}\n.notion-sidebar-container button:hover {\n    background-color: gray;\n}\n.plus {\n  position:absolute;\n  left: 19%;\n}\n.delete {\n  position:absolute;\n  left: 17%;\n}\n.toggle {\n    display: block !important;\n}\n/* content css 적용 */\n.notion-content {\n    padding-top: 96px;\n    flex-direction: column;\n    flex-wrap: wrap;\n    align-content: center;\n}\n.content-title {\n    width: 600px;\n    height: 40px;\n    border: none;\n    outline: none;\n    font-size: 36px;\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n\n/* Editor css 적용 */\n.toolbar {\n    width: 600px;\n    height: 40px;\n    padding: 8px;\n    border-radius: 4px;\n    box-sizing: border-box;\n}\n.toolbar button {\n    height: 24px;\n    padding: 4px;\n    border: 1px solid black;\n    background-color: white;\n    cursor: pointer;\n}\n.toolbar button:hover {\n    background-color: gray;\n}\n.editor {\n    width: 600px;\n    height: 600px;\n    padding: 16px;\n    margin-top: 8px;\n    font-size: 18px;\n    border-radius: 4px;\n    outline: none;\n    box-sizing: border-box;\n}",
-          "",
-        ]);
-        const s = r;
-      },
-      645: (t) => {
-        t.exports = function (t) {
-          var n = [];
-          return (
-            (n.toString = function () {
-              return this.map(function (n) {
-                var e = "",
-                  o = void 0 !== n[5];
-                return (
-                  n[4] && (e += "@supports (".concat(n[4], ") {")),
-                  n[2] && (e += "@media ".concat(n[2], " {")),
-                  o &&
-                    (e += "@layer".concat(
-                      n[5].length > 0 ? " ".concat(n[5]) : "",
-                      " {"
-                    )),
-                  (e += t(n)),
-                  o && (e += "}"),
-                  n[2] && (e += "}"),
-                  n[4] && (e += "}"),
-                  e
-                );
-              }).join("");
-            }),
-            (n.i = function (t, e, o, a, i) {
-              "string" == typeof t && (t = [[null, t, void 0]]);
-              var r = {};
-              if (o)
-                for (var s = 0; s < this.length; s++) {
-                  var d = this[s][0];
-                  null != d && (r[d] = !0);
-                }
-              for (var c = 0; c < t.length; c++) {
-                var l = [].concat(t[c]);
-                (o && r[l[0]]) ||
-                  (void 0 !== i &&
-                    (void 0 === l[5] ||
-                      (l[1] = "@layer"
-                        .concat(l[5].length > 0 ? " ".concat(l[5]) : "", " {")
-                        .concat(l[1], "}")),
-                    (l[5] = i)),
-                  e &&
-                    (l[2]
-                      ? ((l[1] = "@media "
-                          .concat(l[2], " {")
-                          .concat(l[1], "}")),
-                        (l[2] = e))
-                      : (l[2] = e)),
-                  a &&
-                    (l[4]
-                      ? ((l[1] = "@supports ("
-                          .concat(l[4], ") {")
-                          .concat(l[1], "}")),
-                        (l[4] = a))
-                      : (l[4] = "".concat(a))),
-                  n.push(l));
-              }
-            }),
-            n
-          );
-        };
-      },
-      81: (t) => {
-        t.exports = function (t) {
-          return t[1];
-        };
-      },
-      379: (t) => {
-        var n = [];
-        function e(t) {
-          for (var e = -1, o = 0; o < n.length; o++)
-            if (n[o].identifier === t) {
-              e = o;
-              break;
-            }
-          return e;
-        }
-        function o(t, o) {
-          for (var i = {}, r = [], s = 0; s < t.length; s++) {
-            var d = t[s],
-              c = o.base ? d[0] + o.base : d[0],
-              l = i[c] || 0,
-              u = "".concat(c, " ").concat(l);
-            i[c] = l + 1;
-            var p = e(u),
-              m = {
-                css: d[1],
-                media: d[2],
-                sourceMap: d[3],
-                supports: d[4],
-                layer: d[5],
-              };
-            if (-1 !== p) n[p].references++, n[p].updater(m);
-            else {
-              var h = a(m, o);
-              (o.byIndex = s),
-                n.splice(s, 0, { identifier: u, updater: h, references: 1 });
-            }
-            r.push(u);
-          }
-          return r;
-        }
-        function a(t, n) {
-          var e = n.domAPI(n);
-          return (
-            e.update(t),
-            function (n) {
-              if (n) {
-                if (
-                  n.css === t.css &&
-                  n.media === t.media &&
-                  n.sourceMap === t.sourceMap &&
-                  n.supports === t.supports &&
-                  n.layer === t.layer
-                )
-                  return;
-                e.update((t = n));
-              } else e.remove();
-            }
-          );
-        }
-        t.exports = function (t, a) {
-          var i = o((t = t || []), (a = a || {}));
-          return function (t) {
-            t = t || [];
-            for (var r = 0; r < i.length; r++) {
-              var s = e(i[r]);
-              n[s].references--;
-            }
-            for (var d = o(t, a), c = 0; c < i.length; c++) {
-              var l = e(i[c]);
-              0 === n[l].references && (n[l].updater(), n.splice(l, 1));
-            }
-            i = d;
-          };
-        };
-      },
-      569: (t) => {
-        var n = {};
-        t.exports = function (t, e) {
-          var o = (function (t) {
-            if (void 0 === n[t]) {
-              var e = document.querySelector(t);
-              if (
-                window.HTMLIFrameElement &&
-                e instanceof window.HTMLIFrameElement
-              )
-                try {
-                  e = e.contentDocument.head;
-                } catch (t) {
-                  e = null;
-                }
-              n[t] = e;
-            }
-            return n[t];
-          })(t);
-          if (!o)
-            throw new Error(
-              "Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid."
-            );
-          o.appendChild(e);
-        };
-      },
-      216: (t) => {
-        t.exports = function (t) {
-          var n = document.createElement("style");
-          return t.setAttributes(n, t.attributes), t.insert(n, t.options), n;
-        };
-      },
-      565: (t, n, e) => {
-        t.exports = function (t) {
-          var n = e.nc;
-          n && t.setAttribute("nonce", n);
-        };
-      },
-      795: (t) => {
-        t.exports = function (t) {
-          if ("undefined" == typeof document)
-            return { update: function () {}, remove: function () {} };
-          var n = t.insertStyleElement(t);
-          return {
-            update: function (e) {
-              !(function (t, n, e) {
-                var o = "";
-                e.supports && (o += "@supports (".concat(e.supports, ") {")),
-                  e.media && (o += "@media ".concat(e.media, " {"));
-                var a = void 0 !== e.layer;
-                a &&
-                  (o += "@layer".concat(
-                    e.layer.length > 0 ? " ".concat(e.layer) : "",
-                    " {"
-                  )),
-                  (o += e.css),
-                  a && (o += "}"),
-                  e.media && (o += "}"),
-                  e.supports && (o += "}");
-                var i = e.sourceMap;
-                i &&
-                  "undefined" != typeof btoa &&
-                  (o +=
-                    "\n/*# sourceMappingURL=data:application/json;base64,".concat(
-                      btoa(unescape(encodeURIComponent(JSON.stringify(i)))),
-                      " */"
-                    )),
-                  n.styleTagTransform(o, t, n.options);
-              })(n, t, e);
-            },
-            remove: function () {
-              !(function (t) {
-                if (null === t.parentNode) return !1;
-                t.parentNode.removeChild(t);
-              })(n);
-            },
-          };
-        };
-      },
-      589: (t) => {
-        t.exports = function (t, n) {
-          if (n.styleSheet) n.styleSheet.cssText = t;
-          else {
-            for (; n.firstChild; ) n.removeChild(n.firstChild);
-            n.appendChild(document.createTextNode(t));
-          }
-        };
-      },
-    },
-    n = {};
-  function e(o) {
-    var a = n[o];
-    if (void 0 !== a) return a.exports;
-    var i = (n[o] = { id: o, exports: {} });
-    return t[o](i, i.exports, e), i.exports;
-  }
-  (e.n = (t) => {
-    var n = t && t.__esModule ? () => t.default : () => t;
-    return e.d(n, { a: n }), n;
-  }),
-    (e.d = (t, n) => {
-      for (var o in n)
-        e.o(n, o) &&
-          !e.o(t, o) &&
-          Object.defineProperty(t, o, { enumerable: !0, get: n[o] });
-    }),
-    (e.o = (t, n) => Object.prototype.hasOwnProperty.call(t, n)),
-    (e.nc = void 0),
-    (() => {
-      var t = e(379),
-        n = e.n(t),
-        o = e(795),
-        a = e.n(o),
-        i = e(569),
-        r = e.n(i),
-        s = e(565),
-        d = e.n(s),
-        c = e(216),
-        l = e.n(c),
-        u = e(589),
-        p = e.n(u),
-        m = e(314),
-        h = {};
-      (h.styleTagTransform = p()),
-        (h.setAttributes = d()),
-        (h.insert = r().bind(null, "head")),
-        (h.domAPI = a()),
-        (h.insertStyleElement = l()),
-        n()(m.Z, h),
-        m.Z && m.Z.locals && m.Z.locals;
-      const g = async (t, n = {}) => {
-        try {
-          const e = await fetch(`https://kdt-frontend.programmers.co.kr${t}`, {
-            ...n,
-            headers: {
-              "Content-Type": "application/json",
-              "x-username": "SongInJae",
-            },
-          });
-          if (e.ok) return await e.json();
-          throw new Error("API 처리 중 오류가 발생했습니다.");
-        } catch (t) {
-          alert(t.message);
-        }
-      };
-      function f(t, n, e, o) {
-        const a = document.createElement("div");
-        "notion-sidebar-container" !== n.parentNode.className &&
-          a.style.setProperty("display", "none"),
-          (function (t, n, e, o) {
-            for (let a = 0; a < n.length; a++) {
-              const i = document.createElement("div");
-              i.setAttribute("data-id", n[a].id),
-                (i.className = "container"),
-                i.addEventListener("click", (t) => {
-                  const n = t.target
-                    .closest(".container")
-                    .getAttribute("data-id");
-                  history.pushState(null, null, `/content/${n}`), o(n);
-                }),
-                i.addEventListener("mouseover", (t) => {
-                  "SPAN" === t.target.tagName &&
-                    (t.target.parentNode.style.backgroundColor = "lightgray");
-                }),
-                i.addEventListener("mouseout", (t) => {
-                  "SPAN" === t.target.tagName &&
-                    (t.target.parentNode.style.backgroundColor = "");
-                });
-              const r = document.createElement("button");
-              (r.innerText = ">"),
-                r.addEventListener("click", (t) => {
-                  t.stopPropagation();
-                  const n = t.target.nextSibling.childNodes;
-                  for (let t = 0; t < n.length; t++)
-                    "DIV" === n[t].nodeName && n[t].classList.toggle("toggle");
-                }),
-                i.appendChild(r);
-              const s = document.createElement("span");
-              (s.innerText = n[a].title), i.appendChild(s);
-              const d = document.createElement("button");
-              (d.innerText = "-"),
-                (d.className = "delete"),
-                d.addEventListener("click", async (t) => {
-                  const n = t.target.parentNode.getAttribute("data-id");
-                  await g(`/documents/${n}`, { method: "DELETE" }), e();
-                }),
-                i.appendChild(d),
-                b(i),
-                t.append(i),
-                0 !== n[a].documents.length && f(n[a].documents, s);
-            }
-          })(a, t, e, o),
-          n.children[1] ? n.replaceChild(a, n.children[1]) : n.appendChild(a);
-      }
-      function b(t) {
-        const n = document.createElement("button"),
-          e = document.getElementById("modal");
-        (n.innerText = "+"),
-          (n.className = "plus"),
-          n.addEventListener("click", (t) => {
-            e.style.display = "block";
-          }),
-          t.appendChild(n);
-      }
-      function v({ $target: t, initialState: n, onChange: e }) {
-        const o = async () => {
-          const t = await g("/documents");
-          this.setState(t);
-        };
-        !(function (t) {
-          const n = document.getElementById("modal"),
-            e = document.getElementById("submit-modal"),
-            o = document.getElementById("modal-input-title");
-          let a = !1;
-          const i = () => {
-            if (a) return;
-            const { pathname: e } = window.location,
-              [, , o] = e.split("/"),
-              i = document.getElementById("modal-input-title");
-            (n.style.display = "none"),
-              (a = !0),
-              g("/documents", {
-                method: "POST",
-                body: JSON.stringify({ title: i.value, parent: o }),
-              })
-                .then(() => {
-                  (i.value = ""), t();
-                })
-                .finally(() => {
-                  a = !1;
-                });
-          };
-          e.addEventListener("click", i),
-            o.addEventListener("keydown", (t) => {
-              "Enter" === t.key && i();
-            });
-        })(o);
-        const a = document.createElement("nav");
-        (a.innerText = "사이드바"),
-          t.appendChild(a),
-          b(a),
-          o(),
-          (this.state = n),
-          (this.setState = (t) => {
-            (this.state = t), this.render();
-          }),
-          (this.render = () => {
-            f(this.state, a, o, e);
-          }),
-          this.render();
-      }
-      function y(t, n) {
-        const e = document.createElement("div");
-        (e.className = "toolbar"),
-          (e.innerHTML =
-            '\n        <button data-command="bold">Bold</button>\n        <button data-command="italic">Italic</button>\n        <button data-command="justifyLeft">Align Left</button>\n        <button data-command="justifyCenter">Align center</button>\n        <button data-command="justifyRight">Align Right</button>\n    '),
-          e.addEventListener("click", (t) => {
-            document.execCommand(t.target.getAttribute("data-command"));
-            const e = document.getElementsByClassName("content-title")[0],
-              o = document.getElementsByClassName("editor")[0];
-            n(e.value, o.innerHTML);
-          });
-        const o = document.createElement("div");
-        (o.className = "editor"),
-          (o.contentEditable = !0),
-          (o.name = "content"),
-          t.appendChild(e),
-          t.appendChild(o);
-      }
-      function x({ $target: t, initialState: n, onEditing: e }) {
-        const o = document.createElement("input");
-        (o.name = "title"),
-          (o.className = "content-title"),
-          t.appendChild(o),
-          new y(t, e);
-        const a = document.getElementsByClassName("editor")[0];
-        (this.state = n),
-          (this.setState = (t) => {
-            (this.state = t), this.render();
-          }),
-          (this.render = () => {
-            (o.value = this.state.title), (a.innerHTML = this.state.content);
-          }),
-          this.render();
-        let i = null;
-        const r = async (t, n) => {
-          if (void 0 !== this.state[t]) {
-            const o = {
-              ...this.state,
-              [t]: "title" === t ? n.target.value : n.target.innerHTML,
-            };
-            this.setState(o), e(this.state.title, this.state.content);
-          }
-        };
-        t.addEventListener("keyup", (t) => {
-          const n = t.target.name;
-          if ("title" === n) {
-            const { pathname: n } = window.location,
-              [, , e] = n.split("/"),
-              o = document.querySelector(`div[data-id="${e}"]`);
-            for (let n = 0; n < o.children.length; n++)
-              if ("SPAN" === o.children[n].tagName) {
-                o.children[n].textContent = t.target.value;
-                break;
-              }
-          }
-          clearTimeout(i),
-            (i = setTimeout(() => {
-              r(n, t);
-            }, 1e3));
-        });
-      }
-      new (function ({ $sidebarTarget: t, $contentTarget: n }) {
-        const { pathname: e } = window.location,
-          [, o, a] = e.split("/"),
-          i = document.getElementsByClassName("notion-content")[0];
-        async function r(t) {
-          const n = await g(`/documents/${t}`, { method: "GET" });
-          s.setState(n), (i.style.display = "flex");
-        }
-        "content" === o && r(a),
-          new v({ $target: t, initialState: "", onChange: r });
-        const s = new x({
-          $target: n,
-          initialState: "",
-          onEditing: async (t, n) => {
-            const { pathname: e } = window.location,
-              [, , o] = e.split("/");
-            await g(`/documents/${o}`, {
-              method: "PUT",
-              body: JSON.stringify({ title: t, content: n }),
-            });
-          },
-        });
-      })({
-        $sidebarTarget: document.getElementsByClassName(
-          "notion-sidebar-container"
-        )[0],
-        $contentTarget: document.getElementsByClassName("notion-content")[0],
-      });
-    })();
-})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./index.css":
+/*!*********************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./index.css ***!
+  \*********************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `/* 전체 css 적용 */\n* {\n    margin: 0;\n    padding: 0;\n}\n/* 영역 분리 */\n#app {\n    display: flex;\n}\n.notion-sidebar-container {\n    width: 20%;\n}\n.notion-content {\n    width: 80%;\n    min-height: 100vh;\n}\n/* 모달 관련 css */\n#modal {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100vw;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, 0.25);\n    display: none;\n}\n\n.modal-content {\n    background-color: white;\n    margin: 10% auto;\n    padding: 20px;\n    border: 1px solid black;\n    border-radius: 4px;\n    width: 40%;\n}\n#modal button {\n    background-color: rgb(232, 199, 100);\n    width: 30px;\n\n}\n\n/* Sidebar css 적용 */\nnav {\n    width: 100%;\n    min-height: 100vh;\n    background-color: rgb(238, 238, 238);\n    padding-top: 15px;\n    padding-left: 10px;\n}\n.container {\n    width: 100%;\n    display: flex;\n    overflow: hidden;\n    margin: 5px 0px;\n    padding: 5px 0;\n}\n.container:hover {\n    cursor: pointer;\n}\n  \n.container span {\n    flex-grow: 1;\n    overflow: hidden;\n}\ndiv span {\n    flex-grow: 1;\n}\n.notion-sidebar-container button {\n    width: 20px;\n    height: 20px;\n    text-align: center;\n    background: none;\n    border: none;\n    padding: 2px;\n}\n.notion-sidebar-container button:hover {\n    background-color: gray;\n}\n.plus {\n  position:absolute;\n  left: 19%;\n}\n.delete {\n  position:absolute;\n  left: 17%;\n}\n.toggle {\n    display: block !important;\n}\n/* content css 적용 */\n.notion-content {\n    padding-top: 96px;\n    flex-direction: column;\n    flex-wrap: wrap;\n    align-content: center;\n}\n.content-title {\n    width: 600px;\n    height: 40px;\n    border: none;\n    outline: none;\n    font-size: 36px;\n    font-weight: bold;\n    margin-bottom: 10px;\n}\n\n/* Editor css 적용 */\n.toolbar {\n    width: 600px;\n    height: 40px;\n    padding: 8px;\n    border-radius: 4px;\n    box-sizing: border-box;\n}\n.toolbar button {\n    height: 24px;\n    padding: 4px;\n    border: 1px solid black;\n    background-color: white;\n    cursor: pointer;\n}\n.toolbar button:hover {\n    background-color: gray;\n}\n.editor {\n    width: 600px;\n    height: 600px;\n    padding: 16px;\n    margin-top: 8px;\n    font-size: 18px;\n    border-radius: 4px;\n    outline: none;\n    box-sizing: border-box;\n}`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./index.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+eval("\n\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n  Author Tobias Koppers @sokra\n*/\nmodule.exports = function (cssWithMappingToString) {\n  var list = [];\n\n  // return the list of modules as css string\n  list.toString = function toString() {\n    return this.map(function (item) {\n      var content = \"\";\n      var needLayer = typeof item[5] !== \"undefined\";\n      if (item[4]) {\n        content += \"@supports (\".concat(item[4], \") {\");\n      }\n      if (item[2]) {\n        content += \"@media \".concat(item[2], \" {\");\n      }\n      if (needLayer) {\n        content += \"@layer\".concat(item[5].length > 0 ? \" \".concat(item[5]) : \"\", \" {\");\n      }\n      content += cssWithMappingToString(item);\n      if (needLayer) {\n        content += \"}\";\n      }\n      if (item[2]) {\n        content += \"}\";\n      }\n      if (item[4]) {\n        content += \"}\";\n      }\n      return content;\n    }).join(\"\");\n  };\n\n  // import a list of modules into the list\n  list.i = function i(modules, media, dedupe, supports, layer) {\n    if (typeof modules === \"string\") {\n      modules = [[null, modules, undefined]];\n    }\n    var alreadyImportedModules = {};\n    if (dedupe) {\n      for (var k = 0; k < this.length; k++) {\n        var id = this[k][0];\n        if (id != null) {\n          alreadyImportedModules[id] = true;\n        }\n      }\n    }\n    for (var _k = 0; _k < modules.length; _k++) {\n      var item = [].concat(modules[_k]);\n      if (dedupe && alreadyImportedModules[item[0]]) {\n        continue;\n      }\n      if (typeof layer !== \"undefined\") {\n        if (typeof item[5] === \"undefined\") {\n          item[5] = layer;\n        } else {\n          item[1] = \"@layer\".concat(item[5].length > 0 ? \" \".concat(item[5]) : \"\", \" {\").concat(item[1], \"}\");\n          item[5] = layer;\n        }\n      }\n      if (media) {\n        if (!item[2]) {\n          item[2] = media;\n        } else {\n          item[1] = \"@media \".concat(item[2], \" {\").concat(item[1], \"}\");\n          item[2] = media;\n        }\n      }\n      if (supports) {\n        if (!item[4]) {\n          item[4] = \"\".concat(supports);\n        } else {\n          item[1] = \"@supports (\".concat(item[4], \") {\").concat(item[1], \"}\");\n          item[4] = supports;\n        }\n      }\n      list.push(item);\n    }\n  };\n  return list;\n};\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./node_modules/css-loader/dist/runtime/api.js?");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/noSourceMaps.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/noSourceMaps.js ***!
+  \**************************************************************/
+/***/ ((module) => {
+
+eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./node_modules/css-loader/dist/runtime/noSourceMaps.js?");
+
+/***/ }),
+
+/***/ "./index.css":
+/*!*******************!*\
+  !*** ./index.css ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\");\n/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !./node_modules/style-loader/dist/runtime/styleDomAPI.js */ \"./node_modules/style-loader/dist/runtime/styleDomAPI.js\");\n/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !./node_modules/style-loader/dist/runtime/insertBySelector.js */ \"./node_modules/style-loader/dist/runtime/insertBySelector.js\");\n/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ \"./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js\");\n/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !./node_modules/style-loader/dist/runtime/insertStyleElement.js */ \"./node_modules/style-loader/dist/runtime/insertStyleElement.js\");\n/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !./node_modules/style-loader/dist/runtime/styleTagTransform.js */ \"./node_modules/style-loader/dist/runtime/styleTagTransform.js\");\n/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);\n/* harmony import */ var _node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!./node_modules/css-loader/dist/cjs.js!./index.css */ \"./node_modules/css-loader/dist/cjs.js!./index.css\");\n\n      \n      \n      \n      \n      \n      \n      \n      \n      \n\nvar options = {};\n\noptions.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());\noptions.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());\n\n      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, \"head\");\n    \noptions.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());\noptions.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());\n\nvar update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__[\"default\"], options);\n\n\n\n\n       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__[\"default\"] && _node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__[\"default\"].locals ? _node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__[\"default\"].locals : undefined);\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./index.css?");
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+/***/ ((module) => {
+
+eval("\n\nvar stylesInDOM = [];\nfunction getIndexByIdentifier(identifier) {\n  var result = -1;\n  for (var i = 0; i < stylesInDOM.length; i++) {\n    if (stylesInDOM[i].identifier === identifier) {\n      result = i;\n      break;\n    }\n  }\n  return result;\n}\nfunction modulesToDom(list, options) {\n  var idCountMap = {};\n  var identifiers = [];\n  for (var i = 0; i < list.length; i++) {\n    var item = list[i];\n    var id = options.base ? item[0] + options.base : item[0];\n    var count = idCountMap[id] || 0;\n    var identifier = \"\".concat(id, \" \").concat(count);\n    idCountMap[id] = count + 1;\n    var indexByIdentifier = getIndexByIdentifier(identifier);\n    var obj = {\n      css: item[1],\n      media: item[2],\n      sourceMap: item[3],\n      supports: item[4],\n      layer: item[5]\n    };\n    if (indexByIdentifier !== -1) {\n      stylesInDOM[indexByIdentifier].references++;\n      stylesInDOM[indexByIdentifier].updater(obj);\n    } else {\n      var updater = addElementStyle(obj, options);\n      options.byIndex = i;\n      stylesInDOM.splice(i, 0, {\n        identifier: identifier,\n        updater: updater,\n        references: 1\n      });\n    }\n    identifiers.push(identifier);\n  }\n  return identifiers;\n}\nfunction addElementStyle(obj, options) {\n  var api = options.domAPI(options);\n  api.update(obj);\n  var updater = function updater(newObj) {\n    if (newObj) {\n      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap && newObj.supports === obj.supports && newObj.layer === obj.layer) {\n        return;\n      }\n      api.update(obj = newObj);\n    } else {\n      api.remove();\n    }\n  };\n  return updater;\n}\nmodule.exports = function (list, options) {\n  options = options || {};\n  list = list || [];\n  var lastIdentifiers = modulesToDom(list, options);\n  return function update(newList) {\n    newList = newList || [];\n    for (var i = 0; i < lastIdentifiers.length; i++) {\n      var identifier = lastIdentifiers[i];\n      var index = getIndexByIdentifier(identifier);\n      stylesInDOM[index].references--;\n    }\n    var newLastIdentifiers = modulesToDom(newList, options);\n    for (var _i = 0; _i < lastIdentifiers.length; _i++) {\n      var _identifier = lastIdentifiers[_i];\n      var _index = getIndexByIdentifier(_identifier);\n      if (stylesInDOM[_index].references === 0) {\n        stylesInDOM[_index].updater();\n        stylesInDOM.splice(_index, 1);\n      }\n    }\n    lastIdentifiers = newLastIdentifiers;\n  };\n};\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js?");
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/insertBySelector.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertBySelector.js ***!
+  \********************************************************************/
+/***/ ((module) => {
+
+eval("\n\nvar memo = {};\n\n/* istanbul ignore next  */\nfunction getTarget(target) {\n  if (typeof memo[target] === \"undefined\") {\n    var styleTarget = document.querySelector(target);\n\n    // Special case to return head of iframe instead of iframe itself\n    if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {\n      try {\n        // This will throw an exception if access to iframe is blocked\n        // due to cross-origin restrictions\n        styleTarget = styleTarget.contentDocument.head;\n      } catch (e) {\n        // istanbul ignore next\n        styleTarget = null;\n      }\n    }\n    memo[target] = styleTarget;\n  }\n  return memo[target];\n}\n\n/* istanbul ignore next  */\nfunction insertBySelector(insert, style) {\n  var target = getTarget(insert);\n  if (!target) {\n    throw new Error(\"Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.\");\n  }\n  target.appendChild(style);\n}\nmodule.exports = insertBySelector;\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./node_modules/style-loader/dist/runtime/insertBySelector.js?");
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/insertStyleElement.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertStyleElement.js ***!
+  \**********************************************************************/
+/***/ ((module) => {
+
+eval("\n\n/* istanbul ignore next  */\nfunction insertStyleElement(options) {\n  var element = document.createElement(\"style\");\n  options.setAttributes(element, options.attributes);\n  options.insert(element, options.options);\n  return element;\n}\nmodule.exports = insertStyleElement;\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./node_modules/style-loader/dist/runtime/insertStyleElement.js?");
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js ***!
+  \**********************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("\n\n/* istanbul ignore next  */\nfunction setAttributesWithoutAttributes(styleElement) {\n  var nonce =  true ? __webpack_require__.nc : 0;\n  if (nonce) {\n    styleElement.setAttribute(\"nonce\", nonce);\n  }\n}\nmodule.exports = setAttributesWithoutAttributes;\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js?");
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/styleDomAPI.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleDomAPI.js ***!
+  \***************************************************************/
+/***/ ((module) => {
+
+eval("\n\n/* istanbul ignore next  */\nfunction apply(styleElement, options, obj) {\n  var css = \"\";\n  if (obj.supports) {\n    css += \"@supports (\".concat(obj.supports, \") {\");\n  }\n  if (obj.media) {\n    css += \"@media \".concat(obj.media, \" {\");\n  }\n  var needLayer = typeof obj.layer !== \"undefined\";\n  if (needLayer) {\n    css += \"@layer\".concat(obj.layer.length > 0 ? \" \".concat(obj.layer) : \"\", \" {\");\n  }\n  css += obj.css;\n  if (needLayer) {\n    css += \"}\";\n  }\n  if (obj.media) {\n    css += \"}\";\n  }\n  if (obj.supports) {\n    css += \"}\";\n  }\n  var sourceMap = obj.sourceMap;\n  if (sourceMap && typeof btoa !== \"undefined\") {\n    css += \"\\n/*# sourceMappingURL=data:application/json;base64,\".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), \" */\");\n  }\n\n  // For old IE\n  /* istanbul ignore if  */\n  options.styleTagTransform(css, styleElement, options.options);\n}\nfunction removeStyleElement(styleElement) {\n  // istanbul ignore if\n  if (styleElement.parentNode === null) {\n    return false;\n  }\n  styleElement.parentNode.removeChild(styleElement);\n}\n\n/* istanbul ignore next  */\nfunction domAPI(options) {\n  if (typeof document === \"undefined\") {\n    return {\n      update: function update() {},\n      remove: function remove() {}\n    };\n  }\n  var styleElement = options.insertStyleElement(options);\n  return {\n    update: function update(obj) {\n      apply(styleElement, options, obj);\n    },\n    remove: function remove() {\n      removeStyleElement(styleElement);\n    }\n  };\n}\nmodule.exports = domAPI;\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./node_modules/style-loader/dist/runtime/styleDomAPI.js?");
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/styleTagTransform.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleTagTransform.js ***!
+  \*********************************************************************/
+/***/ ((module) => {
+
+eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElement) {\n  if (styleElement.styleSheet) {\n    styleElement.styleSheet.cssText = css;\n  } else {\n    while (styleElement.firstChild) {\n      styleElement.removeChild(styleElement.firstChild);\n    }\n    styleElement.appendChild(document.createTextNode(css));\n  }\n}\nmodule.exports = styleTagTransform;\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./node_modules/style-loader/dist/runtime/styleTagTransform.js?");
+
+/***/ }),
+
+/***/ "./src/App.js":
+/*!********************!*\
+  !*** ./src/App.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ App)\n/* harmony export */ });\n/* harmony import */ var _Sidebar_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Sidebar.js */ \"./src/Sidebar.js\");\n/* harmony import */ var _Content_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Content.js */ \"./src/Content.js\");\n/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api.js */ \"./src/api.js\");\n\n\n\n\nfunction App({ $sidebarTarget, $contentTarget }) {\n  const { pathname } = window.location;\n  const [, check, contentId] = pathname.split(\"/\");\n  const $notionContent = document.getElementsByClassName(\"notion-content\")[0];\n\n  async function onChange(id) {\n    const documents = await (0,_api_js__WEBPACK_IMPORTED_MODULE_2__.request)(`/documents/${id}`, {\n      method: \"GET\",\n    });\n    content.setState(documents);\n    $notionContent.style.display = \"flex\";\n  }\n\n  if (check === \"content\") {\n    onChange(contentId);\n  }\n\n  new _Sidebar_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n    $target: $sidebarTarget,\n    initialState: \"\",\n    onChange,\n  });\n  const content = new _Content_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]({\n    $target: $contentTarget,\n    initialState: \"\",\n    onEditing: async (title, content) => {\n      const { pathname } = window.location;\n      const [, , requestId] = pathname.split(\"/\");\n      await (0,_api_js__WEBPACK_IMPORTED_MODULE_2__.request)(`/documents/${requestId}`, {\n        method: \"PUT\",\n        body: JSON.stringify({\n          title,\n          content,\n        }),\n      });\n    },\n  });\n}\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./src/App.js?");
+
+/***/ }),
+
+/***/ "./src/Content.js":
+/*!************************!*\
+  !*** ./src/Content.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Content)\n/* harmony export */ });\n/* harmony import */ var _Editor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Editor.js */ \"./src/Editor.js\");\n\n\nfunction Content({ $target, initialState, onEditing }) {\n  const $title = document.createElement(\"input\");\n  $title.name = \"title\";\n  $title.className = \"content-title\";\n  $target.appendChild($title);\n\n  new _Editor_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]($target, onEditing);\n  const $content = document.getElementsByClassName(\"editor\")[0];\n\n  this.state = initialState;\n\n  this.setState = (nextState) => {\n    this.state = nextState;\n    this.render();\n  };\n\n  this.render = () => {\n    $title.value = this.state.title;\n    $content.innerHTML = this.state.content;\n  };\n  this.render();\n\n  let timer = null;\n\n  const updateState = async (name, e) => {\n    if (this.state[name] !== undefined) {\n      const nextState = {\n        ...this.state,\n        [name]: name === \"title\" ? e.target.value : e.target.innerHTML,\n      };\n      this.setState(nextState);\n      onEditing(this.state.title, this.state.content);\n    }\n  };\n\n  $target.addEventListener(\"keyup\", (e) => {\n    const name = e.target.name;\n    if (name === \"title\") {\n      const { pathname } = window.location;\n      const [, , id] = pathname.split(\"/\");\n      const divElement = document.querySelector(`div[data-id=\"${id}\"]`);\n\n      for (let i = 0; i < divElement.children.length; i++) {\n        if (divElement.children[i].tagName === \"SPAN\") {\n          divElement.children[i].textContent = e.target.value;\n          break;\n        }\n      }\n    }\n\n    clearTimeout(timer);\n    timer = setTimeout(() => {\n      updateState(name, e);\n    }, 1000);\n  });\n}\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./src/Content.js?");
+
+/***/ }),
+
+/***/ "./src/Editor.js":
+/*!***********************!*\
+  !*** ./src/Editor.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Editor)\n/* harmony export */ });\nfunction Editor($target, onEditing) {\n  const $toolbar = document.createElement(\"div\");\n  $toolbar.className = \"toolbar\";\n  $toolbar.innerHTML = `\n        <button data-command=\"bold\">Bold</button>\n        <button data-command=\"italic\">Italic</button>\n        <button data-command=\"justifyLeft\">Align Left</button>\n        <button data-command=\"justifyCenter\">Align center</button>\n        <button data-command=\"justifyRight\">Align Right</button>\n    `;\n  $toolbar.addEventListener(\"click\", (e) => {\n    document.execCommand(e.target.getAttribute(\"data-command\"));\n    const $title = document.getElementsByClassName(\"content-title\")[0];\n    const $editor = document.getElementsByClassName(\"editor\")[0];\n    onEditing($title.value, $editor.innerHTML);\n  });\n\n  const $editor = document.createElement(\"div\");\n  $editor.className = \"editor\";\n  $editor.contentEditable = true;\n  $editor.name = \"content\";\n\n  $target.appendChild($toolbar);\n  $target.appendChild($editor);\n}\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./src/Editor.js?");
+
+/***/ }),
+
+/***/ "./src/Modal.js":
+/*!**********************!*\
+  !*** ./src/Modal.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ modal)\n/* harmony export */ });\n/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api.js */ \"./src/api.js\");\n\n\nfunction modal(fetchSidebar) {\n  const $modal = document.getElementById(\"modal\");\n  const $submitModal = document.getElementById(\"submit-modal\");\n  const $modalInput = document.getElementById(\"modal-input-title\");\n\n  let isLoading = false;\n\n  const handleModalSubmit = () => {\n    if (isLoading) return;\n\n    const { pathname } = window.location;\n    const [, , id] = pathname.split(\"/\");\n    const input = document.getElementById(\"modal-input-title\");\n\n    $modal.style.display = \"none\";\n    isLoading = true;\n\n    (0,_api_js__WEBPACK_IMPORTED_MODULE_0__.request)(\"/documents\", {\n      method: \"POST\",\n      body: JSON.stringify({\n        title: input.value,\n        parent: id,\n      }),\n    })\n      .then(() => {\n        input.value = \"\";\n        fetchSidebar();\n      })\n      .finally(() => {\n        isLoading = false;\n      });\n  };\n\n  $submitModal.addEventListener(\"click\", handleModalSubmit);\n\n  $modalInput.addEventListener(\"keydown\", (event) => {\n    if (event.key === \"Enter\") {\n      handleModalSubmit();\n    }\n  });\n}\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./src/Modal.js?");
+
+/***/ }),
+
+/***/ "./src/Sidebar.js":
+/*!************************!*\
+  !*** ./src/Sidebar.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Sidebar)\n/* harmony export */ });\n/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api.js */ \"./src/api.js\");\n/* harmony import */ var _Modal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal.js */ \"./src/Modal.js\");\n\n\n\nfunction navDraw(documents, $target, fetchSidebar, onChange) {\n  const $div = document.createElement(\"div\");\n\n  if ($target.parentNode.className !== \"notion-sidebar-container\")\n    $div.style.setProperty(\"display\", \"none\");\n\n  addData($div, documents, fetchSidebar, onChange);\n\n  // 마지막에 자식노드 바꾸기\n  const secondChild = $target.children[1];\n  if (secondChild) $target.replaceChild($div, $target.children[1]);\n  else $target.appendChild($div);\n}\n\nfunction addData($target, documents, fetchSidebar, onChange) {\n  // 데이터 추가하기\n  for (let i = 0; i < documents.length; i++) {\n    const $list = document.createElement(\"div\");\n    $list.setAttribute(\"data-id\", documents[i].id);\n    $list.className = \"container\";\n    $list.addEventListener(\"click\", (e) => {\n      const id = e.target.closest(\".container\").getAttribute(\"data-id\");\n      history.pushState(null, null, `/content/${id}`);\n      onChange(id);\n    });\n\n    $list.addEventListener(\"mouseover\", (e) => {\n      if (e.target.tagName === \"SPAN\") {\n        e.target.parentNode.style.backgroundColor = \"lightgray\";\n      }\n    });\n\n    $list.addEventListener(\"mouseout\", (e) => {\n      if (e.target.tagName === \"SPAN\") {\n        e.target.parentNode.style.backgroundColor = \"\";\n      }\n    });\n\n    const $toggleButton = document.createElement(\"button\");\n    $toggleButton.innerText = \">\";\n    $toggleButton.addEventListener(\"click\", (e) => {\n      e.stopPropagation();\n      const childNode = e.target.nextSibling.childNodes;\n      for (let i = 0; i < childNode.length; i++) {\n        if (childNode[i].nodeName === \"DIV\")\n          childNode[i].classList.toggle(\"toggle\");\n      }\n    });\n    $list.appendChild($toggleButton);\n\n    const $span = document.createElement(\"span\");\n    $span.innerText = documents[i].title;\n    $list.appendChild($span);\n\n    const $deleteButton = document.createElement(\"button\");\n    $deleteButton.innerText = \"-\";\n    $deleteButton.className = \"delete\";\n    $deleteButton.addEventListener(\"click\", async (e) => {\n      const id = e.target.parentNode.getAttribute(\"data-id\");\n      await (0,_api_js__WEBPACK_IMPORTED_MODULE_0__.request)(`/documents/${id}`, {\n        method: \"DELETE\",\n      });\n      fetchSidebar();\n    });\n    $list.appendChild($deleteButton);\n\n    buttonModal($list);\n    $target.append($list);\n\n    if (documents[i].documents.length !== 0)\n      navDraw(documents[i].documents, $span);\n  }\n}\n\nfunction buttonModal($target) {\n  const $button = document.createElement(\"button\");\n  const $modal = document.getElementById(\"modal\");\n\n  $button.innerText = \"+\";\n  $button.className = \"plus\";\n\n  $button.addEventListener(\"click\", (e) => {\n    $modal.style.display = \"block\";\n  });\n  $target.appendChild($button);\n}\n\nfunction Sidebar({ $target, initialState, onChange }) {\n  const fetchSidebar = async () => {\n    const documents = await (0,_api_js__WEBPACK_IMPORTED_MODULE_0__.request)(\"/documents\");\n    this.setState(documents);\n  };\n  (0,_Modal_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(fetchSidebar);\n  const $nav = document.createElement(\"nav\");\n  $nav.innerText = \"사이드바\";\n\n  $target.appendChild($nav);\n  buttonModal($nav, fetchSidebar);\n  fetchSidebar();\n\n  this.state = initialState;\n\n  this.setState = (nextState) => {\n    this.state = nextState;\n    this.render();\n  };\n\n  this.render = () => {\n    navDraw(this.state, $nav, fetchSidebar, onChange);\n  };\n\n  this.render();\n}\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./src/Sidebar.js?");
+
+/***/ }),
+
+/***/ "./src/api.js":
+/*!********************!*\
+  !*** ./src/api.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   API_END_POINT: () => (/* binding */ API_END_POINT),\n/* harmony export */   request: () => (/* binding */ request)\n/* harmony export */ });\nconst API_END_POINT = \"https://kdt-frontend.programmers.co.kr\";\n\nconst request = async (url, options = {}) => {\n  try {\n    const res = await fetch(`${API_END_POINT}${url}`, {\n      ...options,\n      headers: {\n        \"Content-Type\": \"application/json\",\n        \"x-username\": \"SongInJae\",\n      },\n    });\n\n    if (res.ok) return await res.json();\n    throw new Error(\"API 처리 중 오류가 발생했습니다.\");\n  } catch (e) {\n    alert(e.message);\n  }\n};\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./src/api.js?");
+
+/***/ }),
+
+/***/ "./src/main.js":
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.css */ \"./index.css\");\n/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.js */ \"./src/App.js\");\n\n\n\nconst $sidebarTarget = document.getElementsByClassName(\n  \"notion-sidebar-container\"\n)[0];\nconst $contentTarget = document.getElementsByClassName(\"notion-content\")[0];\n\nnew _App_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]({ $sidebarTarget, $contentTarget });\n\n\n//# sourceURL=webpack://fedc4-5_project_notion_vanillajs/./src/main.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			id: moduleId,
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/main.js");
+/******/ 	
+/******/ })()
+;
